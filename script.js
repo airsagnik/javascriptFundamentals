@@ -292,3 +292,107 @@ console.log(clsegg.getFurniture());
 console.log(clsegg2.color);
 console.log(clsegg2.getFurniture());
 
+//----------------templating -------------------
+const data1 = 101;
+const data2 = 22;
+testtemplate`this is templating ${data1} and maintain altitude ${data2}`
+//it is taking one variable at a time
+function  testtemplate(string,val1,val2)
+{
+    console.log("this is how templating works");
+    console.log(string);
+    console.log(val1);
+    console.log(val2);
+}
+
+const d1 = 5;
+const d2 = 6;
+const d3 = 7;
+const d4 = 8;
+const d5 = 9;
+
+testtemplate2`this is templating 2 ${d1} and maintain altitude ${d2} speed=${d3} velocity ${d4},${d5}`;
+
+//this is taking all the variables used using vals array
+function testtemplate2(str,...vals)
+{
+    console.log("templating to handle multiple data");
+    console.log(str);
+    console.log(vals)
+}
+
+//object destructuring
+
+const arr1 = [1,2,3,4,5,6,7];
+const arr2 = ['A','B','C','D','E','F','G','H','I'];
+
+const [a,b] = arr1;
+//in the above example the first 2 elements from the array will be stored in a and b variable
+
+const [c,,d,...rest] = arr2;
+
+console.log("testing destructuring");
+console.log(a);
+console.log(b);
+
+console.log("destructuring with a skipped element");
+console.log(c);
+console.log(d);
+console.log(rest);
+
+//setting up default values
+function sumAndSub(num1,num2)
+{
+    return [num1+num2,num1*num2];
+}
+
+const [r1,r2,r3="no division"] = sumAndSub(2,3);
+//the syntax above will add a default value to the variable
+
+console.log(r1);
+console.log(r2);
+console.log(r3);
+
+//object destructuring
+
+const person1 = {
+    name : "Sagnik",
+    age : 26,
+    address : {
+        city : "Mumbai",
+        country : "India"
+    }
+}
+
+const person2 = {
+    name : "Ishito Shinkashi",
+    age : "30",
+    address : {
+        city : "Tokyo",
+        country: "Japan",
+    }
+}
+
+const {name,age,address:{country}} = person1;
+//above is an example how destructuring can be done the name of the variables has to match with the keys in object
+//an example of nested object destructure is also shown
+console.log(name);
+console.log(age);
+console.log(country);
+
+//we can change the name of the concerned variable as well
+
+const {name : fstname,...rt } = person2;
+//the rt variable holds all the data except the name
+console.log(fstname);
+console.log(rt);
+
+const person3 = {...person1,...person2};
+console.log(person3)
+ 
+
+
+
+
+
+
